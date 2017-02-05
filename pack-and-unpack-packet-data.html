@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Pack and Unpack Packet Data</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Wonseok Choi">
+
+    <!-- Le styles -->
+    <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css" />
+    <style type="text/css">
+      body {
+        padding-top: 60px;
+        padding-bottom: 40px;
+      }
+      .sidebar-nav {
+        padding: 9px 0;
+      }
+      .tag-1 {
+        font-size: 13pt;
+      }
+      .tag-2 {
+        font-size: 10pt;
+      }
+      .tag-2 {
+        font-size: 8pt;
+      }
+      .tag-4 {
+        font-size: 6pt;
+     }
+    </style>
+    <link href="/theme/css/bootstrap-responsive.min.css" rel="stylesheet">
+        <link href="/theme/css/font-awesome.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+    <link rel="shortcut icon" href="/theme/images/favicon.ico">
+    <link rel="apple-touch-icon" href="/theme/images/apple-touch-icon.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/theme/images/apple-touch-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/theme/images/apple-touch-icon-114x114.png">
+
+    <link href="/" type="application/atom+xml" rel="alternate" title="Svperbeast Blog ATOM Feed" />
+
+  </head>
+
+  <body>
+
+    <div class="navbar navbar-fixed-top">
+      <div class="navbar-inner">
+        <div class="container-fluid">
+          <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </a>
+          <a class="brand" href="/index.html">Svperbeast Blog </a>
+          <div class="nav-collapse">
+            <ul class="nav">
+                          <li class="divider-vertical"></li>
+                  <li class="active">
+                    <a href="/category/misc.html">
+						<i class="icon-folder-open icon-large"></i>misc
+					</a>
+                  </li>
+
+                          <ul class="nav pull-right">
+                                <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
+                          </ul>
+
+            </ul>
+            <!--<p class="navbar-text pull-right">Logged in as <a href="#">username</a></p>-->
+          </div><!--/.nav-collapse -->
+        </div>
+      </div>
+    </div>
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="span9" id="content">
+<section id="content">
+        <article>
+                <header>
+                        <h1>
+                                <a href=""
+                                        rel="bookmark"
+                                        title="Permalink to Pack and Unpack Packet Data">
+                                        Pack and Unpack Packet Data
+                                </a>
+                        </h1>
+                </header>
+                <div class="entry-content">
+                <div class="well">
+<footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-06-18T21:32:00+09:00">
+        <i class="icon-calendar"></i>화 18 6월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/misc.html"><i class="icon-folder-open"></i>misc</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/struct.html"><i class="icon-tag"></i>struct</a>
+</footer><!-- /.post-info -->                </div>
+                <p>Data Structure를 (파일에 저장하고) 네트워크를 통해 전송하는 수 많은 방법들이 있다.</p>
+<p>padding없이 만든 struct, POD class 등 을 그대로 memcpy할 수도 있는데,
+Endian 처리를 잘 해줘야 하며 유지보수할 때 실수를 할 가능성이 많다.</p>
+<p>플랫폼뿐만 아니라 프로그래밍 언어 사이에서도 Data를 교환할 수 있도록 한 여러 라이브러리, 프레임워크 등 이 많다.
+<a href="https://code.google.com/p/protobuf/">protocol buffers</a>, <a href="http://thrift.apache.org/">thrift</a>, <a href="http://avro.apache.org/">avro</a>, <a href="http://msgpack.org/">MessagePack</a> 등 Data Serialization뿐 아니라 low level network I/O 및 RPC 메커니즘까지 제공하는 것들도 있다.
+Go는 Go로 작성된 프로그램끼리 Data를 주고받을 수 있도록 한 <a href="http://blog.golang.org/gobs-of-data">gob</a>이라는 패키지도 있다.
+C++ boost 라이브러리에는 <a href="http://www.boost.org/doc/libs/1_53_0/libs/serialization/doc/index.html">Serialization</a>이 있는데, <a href="http://stackoverflow.com/questions/2304061/is-it-safe-to-use-boost-serialization-to-serialize-objects-in-c-to-a-binary-fo">Binary format을 네트워크를 통해 잘 전송하는 것을 보장하지 않는다</a>고 한다 (XML 등 Text 형식은 사용 가능).</p>
+<p>이러한 라이브러리들을 사용하기 위해서, 목적에 맞는 것들을 잘 선택해야 한다.
+최근에 지금 일하고 있는 회사에서 MessagePack을 사용하기로 했다
+(<a href="http://slid.es/wonseokchoi/msgpack-asio">MessagePack 및 boost asio 사용 예</a>).</p>
+<p>그런데, 이런 라이브러리들은 너무 <em>멋지다</em>(Fancy).
+<a href="http://cm.bell-labs.com/cm/cs/tpop/">The Practice of Programming</a>의 한 장에서 소개하는 Packet 처리 방식은 내게 좋은 영감을 주었다. printf의 타입을 명시하는 _little language_를 차용한 이 방식은 Erlang의 pattern matching이나 Python의 struct에서도 관찰할 수 있다고 생각한다.</p>
+<p>Pattern matching 연산으로 IPv4 data를 파싱하는 erlang code
+(Programming Erlang - Joe Armstrong):</p>
+<div class="highlight"><pre><span></span><span class="p">...</span>
+<span class="k">case</span> <span class="nx">Dgram</span> <span class="k">of</span>
+  <span class="o">&lt;</span><span class="cp">&lt;?</span><span class="nx">IP_VERSION</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span> <span class="nx">HLen</span><span class="o">:</span><span class="mi">4</span><span class="p">,</span> <span class="nx">SrvcType</span><span class="o">:</span><span class="mi">8</span><span class="p">,</span> <span class="nx">TotLen</span><span class="o">:</span><span class="mi">16</span><span class="p">,</span>
+    <span class="nx">ID</span><span class="o">:</span><span class="mi">16</span><span class="p">,</span> <span class="nx">Flgs</span><span class="o">:</span><span class="mi">3</span><span class="p">,</span> <span class="nx">FragOff</span><span class="o">:</span><span class="mi">13</span><span class="p">,</span>
+    <span class="nx">TTL</span><span class="o">:</span><span class="mi">8</span><span class="p">,</span> <span class="nx">Proto</span><span class="o">:</span><span class="mi">8</span><span class="p">,</span> <span class="nx">HdrChkSum</span><span class="o">:</span><span class="mi">16</span><span class="p">,</span>
+    <span class="nx">SrcIP</span><span class="o">:</span><span class="mi">32</span>
+    <span class="o">...</span>
+</pre></div>
+
+
+<p>Packing, Unpacking three integers
+(http://docs.python.org/2/library/struct.html#examples):</p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">from</span> <span class="nn">struct</span> <span class="kn">import</span> <span class="o">*</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">pack</span><span class="p">(</span><span class="s1">&#39;hhl&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<span class="s1">&#39;</span><span class="se">\x00\x01\x00\x02\x00\x00\x00\x03</span><span class="s1">&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">unpack</span><span class="p">(</span><span class="s1">&#39;hhl&#39;</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\x00\x01\x00\x02\x00\x00\x00\x03</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+</pre></div>
+
+
+<p>pattern matching은 규칙을 명시하는 little language의 수준을 뛰어 넘는 것으로 보인다. Python struct module의 <code>hhl</code>과 같은 문자열은 little language의 좋은 예가 된다.
+The Practice of Programmig에서는 위와 같은 예를 소개하고 있다:</p>
+<blockquote>
+<p>이 예는 어떤 상용 네트워크 프로토콜의 실제 코드에 기반한다.
+필자가 일단 이 접근방식이 통할 거라고 깨닫자마자, 몇천 줄 정도 되던
+반복적이고 에러가 생기기 쉬웠던 코드가, 유지보수하기 쉬운 몇백 줄 정도로
+줄어들었다. 표기법이 혼란을 확 잠재운 것이다.</p>
+</blockquote>
+<p><a href="https://github.com/svperbeast/struct">struct</a>는 Python struct module과 비슷하게 구현한 C Library이다.
+이 코드에 Null-terminated string, blob data 등 을 추가한 코드는 <a href="https://github.com/Xsoda/struct">여기</a>에서 확인할 수 있다.</p>
+                </div><!-- /.entry-content -->
+        </article>
+</section>
+        </div><!--/span-->
+
+                <div class="span3 well sidebar-nav" id="sidebar">
+<ul class="nav nav-list">
+<li class="nav-header"><h4><i class="icon-home icon-large"></i> social</h4></li>
+    <li><a href="http://github.com/svperbeast"><i class="icon-github-sign icon-large"></i>github</a></li>
+    <li><a href="http://stackoverflow.com/users/3131607/svperbeast"><i class="icon-stackoverflow-sign icon-large"></i>stackoverflow</a></li>
+
+<li class="nav-header"><h4><i class="icon-folder-close icon-large"></i>Categories</h4></li>
+<li>
+<a href="/category/misc.html">
+    <i class="icon-folder-open icon-large"></i>misc
+</a>
+</li>
+
+<li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+
+
+</ul>        </div><!--/.well -->
+
+      </div><!--/row-->
+
+      <hr>
+
+      <footer>
+        <address id="about">
+                Proudly powered by <a href="http://pelican.notmyidea.org/">Pelican <i class="icon-external-link"></i></a>,
+                                which takes great advantage of <a href="http://python.org">Python <i class="icon-external-link"></i></a>.
+        </address><!-- /#about -->
+
+        <p>The theme is from <a href="http://twitter.github.com/bootstrap/">Bootstrap from Twitter <i class="icon-external-link"></i></a>,
+                   and <a href="http://fortawesome.github.com/Font-Awesome/">Font-Awesome <i class="icon-external-link"></i></a>, thanks!</p>
+      </footer>
+
+    </div><!--/.fluid-container-->
+
+
+
+    <!-- Le javascript -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/theme/js/jquery-1.7.2.min.js"></script>
+    <script src="/theme/js/bootstrap.min.js"></script>
+  </body>
+</html>
