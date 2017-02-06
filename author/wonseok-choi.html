@@ -69,6 +69,11 @@
 						<i class="icon-folder-open icon-large"></i>Blog
 					</a>
                   </li>
+                  <li >
+                    <a href="/category/sicp.html">
+						<i class="icon-folder-open icon-large"></i>SICP
+					</a>
+                  </li>
 
                           <ul class="nav pull-right">
                                 <li><a href="/archives.html"><i class="icon-th-list"></i>Archives</a></li>
@@ -109,6 +114,222 @@ Endian 처리를 잘 해줘야 하며 유지보수할 때 실수를 할 가능�
                 </div>
         </div>
         <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-116.html">SICP Exercise 1.16</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T22:50:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><div class="highlight"><pre><span></span>b^2 = b * b
+b^4 = b^2 * b^2
+b^8 = b^4 * b^4
+</pre></div>
+
+
+<p>로 부터 아래와 같은 규칙을 얻는다.</p>
+<div class="highlight"><pre><span></span>b^n = (b^(n/2))^2 if n is even
+b^n = b * b^(n-1) if n is odd
+</pre></div>
+
+
+<p>이 것을 Big Theta (log n) growth를 갖는 procedure로 …</p>
+                        <a class="btn primary xsmall" href="/sicp-exercise-116.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-112.html">SICP Exercise 1.12</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T22:30:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>파스칼의 삼각형 문제이다.
+문제 자체는 뭘 계산하라는 건지 좀 모호한데,
+그냥 주어진 위치의 값을 결과로 내는 procedure를 만들었다.
+위치는  (행, 열) 형식이다.</p>
+<p>다른 사람들도 이런 식으로 생각한 것같다.</p>
+<p>SICP Exercise 1.12</p>
+<div class="highlight"><pre><span></span><span class="c1">;; Pascal&#39;s triangle</span>
+<span class="c1">;;</span>
+<span class="c1">;; notation: (row, column)</span>
+<span class="c1">;;</span>
+<span class="c1">;;   1            (1, 1)</span>
+<span class="c1">;;  1 1       (2, 1)  (2, 2)</span>
+<span class="c1">;; 1 2 1 …</span></pre></div>
+                        <a class="btn primary xsmall" href="/sicp-exercise-112.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-111.html">SICP Exercise 1.11</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T22:18:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><div class="highlight"><pre><span></span>f(n) = n if n &gt; 3
+f(n) = f(n-1) + 2f(n-2) + 3f(n-3) if n &gt;= 3
+</pre></div>
+
+
+<p>f(n)을 recursive process와 iterative process로 작성하는 문제이다.</p>
+<p>내가 기억하기로는 (책에서), 조엘 스폴스키는 C와 같은 언어를 이용해서
+recursive function을 만드는 사람을 채용하지 않는다고 했는데,
+stack overflow가 발생할 수 있기 때문이다.
+일정한 space만 …</p>
+                        <a class="btn primary xsmall" href="/sicp-exercise-111.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-18.html">SICP Exercise 1.8</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T22:03:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>세 제곱근을 구하는 문제다.
+exercise 1.7의 <code>improve</code> procedure만 바꿔주면 된다.</p>
+<p>SICP Exercise 1.8</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cuberoot-iter</span> <span class="nv">guess</span> <span class="nv">prev-guess</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nf">good-enough?</span> <span class="nv">guess</span> <span class="nv">prev-guess</span><span class="p">)</span>
+    <span class="nv">guess</span>
+    <span class="p">(</span><span class="nf">cuberoot-iter</span> <span class="p">(</span><span class="nf">improve</span> <span class="nv">guess</span> <span class="nv">x</span><span class="p">)</span> <span class="nv">guess</span> <span class="nv">x</span><span class="p">)))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">improve</span> <span class="nv">guess</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">/ </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nb">/ </span><span class="nv">x</span> <span class="p">(</span><span class="nf">square</span> <span class="nv">guess</span><span class="p">))</span>
+        <span class="p">(</span><span class="nb">* </span><span class="mi">2</span> <span class="nv">guess</span><span class="p">))</span>
+     <span class="mi">3</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">square</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">cube</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">* </span><span class="nv">x …</span></pre></div>
+                        <a class="btn primary xsmall" href="/sicp-exercise-18.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-17.html">SICP Exercise 1.7</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T17:21:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>원래 책에 소개된 코드는 square를 취한 결과를 x와 비교해서 적당한 값이라고
+생각되면 값을 반환하게 되어있다. 1.7 문제는 이 코드를 개선하라는 것인데,
+너무 작은 값이나 큰 값에 대해서 정확하게 동작하지 않기 때문이다.</p>
+<p>floating-point 타입의 정밀도 한계때문에 아주 작은 값에 대해서 정확한 값을
+얻지 못하고, 아주 큰 값에 대해서는 비효율적이거나 값을 …</p>
+                        <a class="btn primary xsmall" href="/sicp-exercise-17.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-16.html">SICP Exercise 1.6</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T17:09:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>SICP (Structure and Interpretation of Computer Programs)를 공부하는 사람이 꽤
+많은 듯 하다. 관련 블로그도 많고, 다 볼 수 있을지 모르겠지만,
+How To Design Programs 살 때 덤으로 산건데 이걸 먼저 보고 있다..</p>
+<p>아무튼 Exercise 1.6 은 <code>cond</code> 를 이용해 <code>if</code> 를 대체하는 procedure를 만들어
+사용하면 어떻게 되느냐 …</p>
+                        <a class="btn primary xsmall" href="/sicp-exercise-16.html">more ...</a>
+                </div>
+        </div>
+        <hr />
+        <div class="article">
+                <h1><a href="/sicp-exercise-13.html">SICP Exercise 1.3</a></h1>
+                <div class="well small"><footer class="post-info">
+<span class="label">Date</span>
+<abbr class="published" title="2013-02-24T16:59:00+09:00">
+        <i class="icon-calendar"></i>일 24 2월 2013
+</abbr>
+<span class="label">By</span>
+<a href="/author/wonseok-choi.html"><i class="icon-user"></i>Wonseok Choi</a>
+<span class="label">Category</span>
+<a href="/category/sicp.html"><i class="icon-folder-open"></i>SICP</a>.
+
+
+<span class="label">Tags</span>
+	<a href="/tag/sicp.html"><i class="icon-tag"></i>sicp</a>
+</footer><!-- /.post-info --></div>
+                <div class="summary"><p>cond 여러 개를 쭉 늘어 놓았다가, 결국 다음 코드처럼 간결하게..</p>
+<div class="highlight"><pre><span></span><span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">square</span> <span class="nv">x</span><span class="p">)</span>
+  <span class="p">(</span><span class="nb">* </span><span class="nv">x</span> <span class="nv">x</span><span class="p">))</span>
+
+<span class="p">(</span><span class="k">define </span><span class="p">(</span><span class="nf">sum-square-2big</span> <span class="nv">a</span> <span class="nv">b</span> <span class="nv">c</span><span class="p">)</span>
+  <span class="p">(</span><span class="k">cond </span><span class="p">((</span><span class="nb">&gt;= </span><span class="nv">a</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">square</span> <span class="nv">a</span><span class="p">)</span> <span class="p">(</span><span class="nf">square</span> <span class="p">(</span><span class="nb">max </span><span class="nv">b</span> <span class="nv">c</span><span class="p">))))</span>
+        <span class="p">(</span><span class="k">else </span><span class="p">(</span><span class="nb">+ </span><span class="p">(</span><span class="nf">square</span> <span class="nv">b</span><span class="p">)</span> <span class="p">(</span><span class="nf">square</span> <span class="p">(</span><span class="nb">max </span><span class="nv">a</span> <span class="nv">c</span><span class="p">))))</span>
+        <span class="p">))</span>
+
+<span class="c1">;; test</span>
+<span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="mi">0</span> <span class="p">(</span><span class="nf">sum-square-2big</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">))</span> <span class="no">#t</span> <span class="no">#f</span><span class="p">)</span>
+<span class="p">(</span><span class="k">if </span><span class="p">(</span><span class="nb">= </span><span class="mi">2</span> <span class="p">(</span><span class="nf">sum-square-2big</span> <span class="mi">-1</span> <span class="mi">-1 …</span></pre></div>
+                        <a class="btn primary xsmall" href="/sicp-exercise-13.html">more ...</a>
+                </div>
+        </div>
+        <hr />
 
         </div><!--/span-->
 
@@ -123,8 +344,23 @@ Endian 처리를 잘 해줘야 하며 유지보수할 때 실수를 할 가능�
     <i class="icon-folder-open icon-large"></i>Blog
 </a>
 </li>
+<li>
+<a href="/category/sicp.html">
+    <i class="icon-folder-open icon-large"></i>SICP
+</a>
+</li>
 
 <li class="nav-header"><h4><i class="icon-tags icon-large"></i>Tags</h4></li>
+<li class="tag-1">
+    <a href="/tag/sicp.html">
+        <i class="icon-tag icon-large"></i>sicp
+    </a>
+</li>
+<li class="tag-4">
+    <a href="/tag/struct.html">
+        <i class="icon-tag icon-large"></i>struct
+    </a>
+</li>
 
 
 </ul>        </div><!--/.well -->
@@ -146,6 +382,15 @@ Endian 처리를 잘 해줘야 하며 유지보수할 때 실수를 할 가능�
     </div><!--/.fluid-container-->
 
 
+<script type="text/javascript">
+    var disqus_shortname = 'svperbeast-blog';
+    (function () {
+        var s = document.createElement('script'); s.async = true;
+        s.type = 'text/javascript';
+        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+</script>
 
     <!-- Le javascript -->
     <!-- Placed at the end of the document so the pages load faster -->
